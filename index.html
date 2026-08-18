@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="da">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,107 +8,76 @@
     <title>Weather App</title>
 
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 </head>
 
 <body class="weather-page">
+        <main class="weather">
+            <section class="weather__card">
 
-    <main class="weather">
+                <!-- HEADER -->
+                <header class="weather__header">
+                    <p class="weather__eyebrow">WEATHER</p>
+                    <h1 class="weather__title">Hvordan er vejret?</h1>
+                </header>
 
-        <section class="weather__card">
+                <!-- SEARCH -->
+                <form class="weather__search" id="weatherForm">
+                    <div class="search__wrapper">
+                        <input type="text" id="cityInput" class="weather__input" placeholder="Søg efter en by..." autocomplete="off">
+                        <div class="search__suggestions"id="suggestions"></div>
+                    </div>
+                    <button type="submit" class="weather__button">Søg</button>
+                </form>
 
-            <div class="weather__header">
-                <p class="weather__eyebrow">WEATHER APP</p>
-                <h1 class="weather__title">Hvordan er vejret?</h1>
-            </div>
+                <!-- ERROR -->
+                <p class="weather__error" id="errorMessage"></p>
 
-            <form class="weather__search" id="weatherForm">
-
-                <label for="cityInput" class="visually-hidden">
-                    Søg efter by
-                </label>
-
-                <input
-                    type="text"
-                    id="cityInput"
-                    class="weather__input"
-                    placeholder="Søg efter en by..."
-                    autocomplete="off"
-                >
-
-                <button type="submit" class="weather__button">
-                    Søg
-                </button>
-
-            </form>
-
-            <p class="weather__error" id="errorMessage"></p>
-
-            <section class="weather__result">
-
-                <div class="weather__location">
-                    <h2 id="cityName">Odense</h2>
-                    <p id="countryName">Danmark</p>
-                </div>
-
-                <div class="weather__main">
-
-                    <div class="weather__icon" id="weatherIcon">
-                        ☀️
+                <!-- CURRENT WEATHER -->
+                <section class="weather__result">
+                    <div class="weather__location">
+                        <h2 id="cityName">Odense</h2>
+                        <p id="countryName">Danmark</p>
                     </div>
 
-                    <div>
-                        <p class="weather__temperature" id="temperature">
-                            --°
-                        </p>
-
-                        <p class="weather__description" id="description">
-                            Søger vejr...
-                        </p>
-                    </div>
-
-                </div>
-
-                <div class="weather__details">
-
-                    <div class="weather__detail">
-                        <span class="weather__detail-icon">💧</span>
-
+                    <div class="weather__main">
+                        <div class="weather__icon" id="weatherIcon">☀️</div>
                         <div>
-                            <p>Luftfugtighed</p>
-                            <strong id="humidity">--%</strong>
+                            <p class="weather__temperature"id="temperature">--°</p>
+                            <p class="weather__description" id="description">Henter vejr...</p>
                         </div>
                     </div>
 
-                    <div class="weather__detail">
-                        <span class="weather__detail-icon">💨</span>
+                    <!-- WEATHER DETAILS -->
+                    <div class="weather__details">
+                        <div class="weather__detail">
+                            <span class="weather__detail-icon">💧</span>
+                            <div>
+                                <p>Luftfugtighed</p>
+                                <strong id="humidity">--%</strong>
+                            </div>
+                        </div>
 
-                        <div>
-                            <p>Vind</p>
-                            <strong id="wind">-- km/t</strong>
+                        <div class="weather__detail">
+                            <span class="weather__detail-icon">💨</span>
+                             <div>
+                                <p>Vind</p>
+                                <strong id="wind">-- km/t</strong>
+                             </div>
                         </div>
                     </div>
+                </section>
 
-                </div>
-
+                <section class="forecast">
+                    <h2 class="forecast__title">De næste dage</h2>
+                    <div class="forecast__list" id="forecastList"></div>
+                </section>
             </section>
+        </main>
+    <footer class="footer"><p>@ Channe Lykke Krog 2026</p></footer>
 
-            <section class="forecast">
-
-                <h2 class="forecast__title">
-                    De næste dage
-                </h2>
-
-                <div
-                    class="forecast__list"
-                    id="forecastList"
-                ></div>
-
-            </section>
-
-        </section>
-
-    </main>
-
+    <script src="js/script.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body class="weather-page">
+
+    <main class="weather">
+
+        <section class="weather__card">
+
+            <div class="weather__header">
+                <p class="weather__eyebrow">WEATHER APP</p>
+                <h1 class="weather__title">Hvordan er vejret?</h1>
+            </div>
+
+            <form class="weather__search" id="weatherForm">
+
+                <label for="cityInput" class="visually-hidden">
+                    Søg efter by
+                </label>
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    class="weather__input"
+                    placeholder="Søg efter en by..."
+                    autocomplete="off"
+                >
+
+                <button type="submit" class="weather__button">
+                    Søg
+                </button>
+
+            </form>
+
+            <p class="weather__error" id="errorMessage"></p>
+
+            <section class="weather__result">
+
+                <div class="weather__location">
+                    <h2 id="cityName">Odense</h2>
+                    <p id="countryName">Danmark</p>
+                </div>
+
+                <div class="weather__main">
+
+                    <div class="weather__icon" id="weatherIcon">
+                        ☀️
+                    </div>
+
+                    <div>
+                        <p class="weather__temperature" id="temperature">
+                            --°
+                        </p>
+
+                        <p class="weather__description" id="description">
+                            Søger vejr...
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="weather__details">
+
+                    <div class="weather__detail">
+                        <span class="weather__detail-icon">💧</span>
+
+                        <div>
+                            <p>Luftfugtighed</p>
+                            <strong id="humidity">--%</strong>
+                        </div>
+                    </div>
+
+                    <div class="weather__detail">
+                        <span class="weather__detail-icon">💨</span>
+
+                        <div>
+                            <p>Vind</p>
+                            <strong id="wind">-- km/t</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="forecast">
+
+                <h2 class="forecast__title">
+                    De næste dage
+                </h2>
+
+                <div
+                    class="forecast__list"
+                    id="forecastList"
+                ></div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

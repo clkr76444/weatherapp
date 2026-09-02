@@ -85,6 +85,163 @@ button, input {
 }
 
 
+/* LOADER */
+.weather-page .weather {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.weather-page.weather-page--indlaest .weather {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease 0.1s;
+}
+
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: #20242b;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0s linear 0.4s;
+}
+
+.loader--skjult {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader__kompas {
+    display: block;
+    width: 9.375em;
+    height: 9.375em;
+}
+
+.loader__pil,
+.loader__ring-rotation,
+.loader__ring-streg,
+.loader__tick {
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.loader__pil {
+    animation-name: loader-pil;
+    transform: rotate(45deg);
+    transform-origin: 16px 52px;
+}
+
+.loader__ring-rotation,
+.loader__ring-streg {
+    transform-origin: 80px 80px;
+}
+
+.loader__ring-rotation {
+    animation-name: loader-ring-rotation;
+}
+
+.loader__ring-streg {
+    animation-name: loader-ring-streg;
+    transform: rotate(-45deg);
+}
+
+.loader__tick {
+    animation-name: loader-tick;
+}
+
+.loader__tick:nth-child(2) {
+    animation-delay: -1.75s;
+}
+
+.loader__tick:nth-child(3) {
+    animation-delay: -1.5s;
+}
+
+.loader__tick:nth-child(4) {
+    animation-delay: -1.25s;
+}
+
+.loader__tick:nth-child(5) {
+    animation-delay: -1s;
+}
+
+.loader__tick:nth-child(6) {
+    animation-delay: -0.75s;
+}
+
+.loader__tick:nth-child(7) {
+    animation-delay: -0.5s;
+}
+
+.loader__tick:nth-child(8) {
+    animation-delay: -0.25s;
+}
+
+.loader__tekst {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25em;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+@keyframes loader-pil {
+    from {
+        transform: rotate(45deg);
+    }
+
+    to {
+        transform: rotate(405deg);
+    }
+}
+
+@keyframes loader-ring-rotation {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes loader-ring-streg {
+    from,
+    to {
+        stroke-dashoffset: 452;
+        transform: rotate(-45deg);
+    }
+
+    50% {
+        stroke-dashoffset: 169.5;
+        transform: rotate(-180deg);
+    }
+}
+
+@keyframes loader-tick {
+    from,
+    3%,
+    47%,
+    to {
+        stroke-dashoffset: -12;
+    }
+
+    14%,
+    36% {
+        stroke-dashoffset: 0;
+    }
+}
+
+
 /* MAIN */
 .weather {
     min-height: 100vh;

@@ -10,6 +10,50 @@ const humidity = document.querySelector("#humidity");
 const wind = document.querySelector("#wind");
 const forecastList = document.querySelector("#forecastList");
 const errorMessage = document.querySelector("#errorMessage");
+const loader = document.querySelector("#loader");
+
+// Alle baggrundsbilleder der skal indlæses, før siden vises
+const backgroundImages = [
+    "images/sunny.webp",
+    "images/cloudy.webp",
+    "images/rainy.webp",
+    "images/snow.webp",
+    "images/storm.webp",
+    "images/sunrise.webp",
+    "images/sunset.webp",
+    "images/clear-night.webp",
+    "images/cloudy-night.webp"
+];
+
+
+// PRELOAD BILLEDER //
+function preloadImages(urls) {
+    const loadPromises = urls.map(function(url) {
+        return new Promise(function(resolve) {
+            const image = new Image();
+            image.onload = resolve;
+            image.onerror = resolve;
+            image.src = url;
+        });
+    });
+
+    return Promise.all(loadPromises);
+}
+
+
+// MINDSTETID FOR LOADER //
+function minimumVentetid(ms) {
+    return new Promise(function(resolve) {
+        setTimeout(resolve, ms);
+    });
+}
+
+
+// SKJUL LOADER //
+function hideLoader() {
+    document.body.classList.add("weather-page--indlaest");
+    loader.classList.add("loader--skjult");
+}
 
 
 // WEATHER INFORMATION //
@@ -473,4 +517,8 @@ weatherForm.addEventListener("submit", function(event) {
 
 
 // DEFAULT CITY//
-searchWeather("Odense");
+Promise.all([
+    preloadImages(backgroundImages),
+    minimumVentetid(4000),
+    searchWeather("Odense")
+]).then(hideLoader);
